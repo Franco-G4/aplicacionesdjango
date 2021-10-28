@@ -1,0 +1,54 @@
+ {% load static %}
+ <head></head>
+ <!-- Bootstrap -->
+ <link href="{% static 'UtilidadesApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+ <!-- Fonts -->
+
+ <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+ 
+
+<!-- Styles -->
+<link href="{% static 'UtilidadesApp/css/gestion.css' %}" rel="stylesheet">
+
+ <!-- Bootstrap -->
+ <script src="{% static 'UtilidadesApp/vendor/jquery/jquery.min.js' %}"></script>
+ <script src="{% static 'UtilidadesApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+ <!-- Navbar -->
+ <div class="conteiner clearfix">
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'home' %}">Utilidades Cooperativa Telefónica</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Inicio</a>
+          </li>
+          <li class="nav-item {% if request.path == '/pares' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'pares' %}">Pares telefónicos</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="">Abonados</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="">Contacto</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="">Pagarle al programador</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav> 
+</div>
+<!-- CONTENIDO DINAMICO -->
+{% block content %}
+
+{% endblock %}
+<!-- FIN CONTENIDO DINAMICO --

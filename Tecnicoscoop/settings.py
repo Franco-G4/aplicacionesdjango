@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-e#1r4&er!s)$i=9ie!kt*k^@zw+xap710zy)$dqw52+03!&c2v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cotessyl.herokuapp.com', '0.0.0.0', '127.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['cotessyl.herokuapp.com', '0.0.0.0', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'UtilidadesApp',
-    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +78,7 @@ WSGI_APPLICATION = 'Tecnicoscoop.wsgi.application'
 
 DATABASES = {
     'default': {
-          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cotessyl',
         'USER': 'postgres',
         'PASSWORD': '492492',
@@ -124,8 +123,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (  
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -137,12 +141,8 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)  
 DATABASES['default'].update(db_from_env)
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
-STATIC_URL = '/static/'
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (  
-    os.path.join(BASE_DIR, 'static'),
-)
+
+# STATIC_URL = '/static/'
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFileStorage'

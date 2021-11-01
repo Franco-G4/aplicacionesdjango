@@ -1,3 +1,2 @@
 
-
-gunicorn Tecnicoscoop.wsgi --log-file--
+web: gunicorn Tecnicoscoop.wsgi --log-file--
